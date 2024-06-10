@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static int size = 0;
     public static void main(String[] args){
+        //if matrix is nilpotent then :
         System.out.println("Weclome Kevi's Eigenvector Calculator! ");
         System.out.println("Please enter the size of your matrix : ");
         Scanner scan = new Scanner(System.in);
@@ -30,6 +31,7 @@ public class Main {
         }
         System.out.print("v1 = " + Matrix.displayMatrix(Matrix.normalizeMatrix(Matrix.matrixMultiplication(m, v, 75))));
     }
+    //else, then Jordan Normal Form?
     //If the transformation diverges, then use a different method. Jordan Normal Form?
     
     //Ideas: Change of Basis, Phase Portrait Plot
