@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 public class Main {
+    //Ideas: Change of Basis, Phase Portrait Plot, Polar Form for complex numbers
     public static int size = 0;
     public static void main(String[] args){
         //if matrix is nilpotent then :
@@ -23,17 +24,22 @@ public class Main {
         //Must change all non-double entries to doubles
         System.out.println("A = ");
         System.out.println(Matrix.displayMatrix(m));
+        ComplexNumber[] m1 = new ComplexNumber[m.length];
+        for (int j = 0; j < m.length; j++){
+            m1[j] = new ComplexNumber(j+1,0);
+        }
+        System.out.println(Matrix.displayMatrix(Matrix.matrixMultiplication(m, m1, 3)));
         //Start of eigenvector calculation in main method
         ComplexNumber [] v = new ComplexNumber [size];
         for (int i = 0; i < size; i++){
-            //will changing 10000 change the accuracy?
             v[i] = new ComplexNumber(Math.random() * 10000, Math.random() * 10000);
         }
         System.out.print("v1 = " + Matrix.displayMatrix(Matrix.normalizeMatrix(Matrix.matrixMultiplication(m, v, 75))));
+
     }
-    //else, then Jordan Normal Form?
-    //If the transformation diverges, then use a different method. Jordan Normal Form?
-    
-    //Ideas: Change of Basis, Phase Portrait Plot
+    //LU algorithm start
+    //public static void main(String[] args){
+
+    //}
     
 }

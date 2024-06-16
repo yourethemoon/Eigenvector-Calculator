@@ -9,6 +9,9 @@ public class Matrix {
         }
         return output;
     }
+    public static ComplexNumber[][] findInverse(ComplexNumber[][] m){
+        return null;
+    }
     public static ComplexNumber[] matrixMultiplication(ComplexNumber[][] nn, ComplexNumber[] n1){
         int n = nn.length;
         ComplexNumber [] temp = new ComplexNumber [n]; 
@@ -20,9 +23,40 @@ public class Matrix {
         }
         return temp;
     }
-    public static ComplexNumber [] matrixMultiplication(ComplexNumber[][] nn, ComplexNumber[] n1, int n){
-        ComplexNumber [] v = new ComplexNumber [nn.length];
+    public static ComplexNumber[][] matrixMultiplication(ComplexNumber[][] nn, ComplexNumber[][] nn2){
+        int n = nn.length;
+        ComplexNumber [][] temp = new ComplexNumber [n][n]; 
+        for(int row = 0; row < n;row++){
+            for(int col = 0; col < n; col++){
+                temp[row][col] = new ComplexNumber(0,0);
+                for (int i = 0; i < n; i++){
+                    temp[row][col].add(ComplexNumber.multiply(nn[row][i], nn2[i][col]));
+                }
+            }
+        }
+        return temp;
+    }
+    public static ComplexNumber [][] matrixMultiplication(ComplexNumber[][] nn, ComplexNumber[][] nn2, int n){
         if (n == 0){
+            ComplexNumber[][] temp = new ComplexNumber [nn.length][nn.length];
+            for(int row = 0; row < nn.length; row++){
+                for(int col = 0; col < nn.length; col++){
+                    if( row == col){
+                        temp[row][col] = new ComplexNumber(1,0);
+                    }
+                    else{
+                        temp[row][col] = new ComplexNumber(0,0);
+                    }
+                }
+            }
+            return temp;
+        }
+        else{
+            return matrixMultiplication(nn, matrixMultiplication(nn, nn2, n-1));
+        }
+    }
+    public static ComplexNumber [] matrixMultiplication(ComplexNumber[][] nn, ComplexNumber[] n1, int n){
+        if (n == 1){
             return n1;
         }
         else{
@@ -49,4 +83,5 @@ public class Matrix {
         }
         return v;
     }
+
 }
