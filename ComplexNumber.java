@@ -91,7 +91,7 @@ public class ComplexNumber
     */  
     public void divide(ComplexNumber z)
     {
-        set(divide(this,z));
+        set(divide(this, z));
     }
     /**
     * Sets the value of current complex number to the passed complex number.

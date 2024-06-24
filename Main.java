@@ -1,5 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
+
+import archived.LUDecomposition;
 public class Main {
     //Ideas: Change of Basis, Phase Portrait Plot, Polar Form for complex numbers
     public static int size = 0;
@@ -28,7 +30,10 @@ public class Main {
         for (int j = 0; j < m.length; j++){
             m1[j] = new ComplexNumber(j+1,0);
         }
-        System.out.println(Matrix.displayMatrix(Matrix.matrixMultiplication(m, m1, 3)));
+        Matrix A = new Matrix(m);
+        LUDecomposition b = new LUDecomposition(A);
+        System.out.println("L = " + Matrix.displayMatrix(b.getL()));
+        System.out.println("U = " + Matrix.displayMatrix(b.getU()));
         //Start of eigenvector calculation in main method
         ComplexNumber [] v = new ComplexNumber [size];
         for (int i = 0; i < size; i++){
